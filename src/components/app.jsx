@@ -24,6 +24,25 @@ class App extends Component {
     ]
   };
 
+  constructor(props) {
+    super(props);
+    console.log("App - Constructor");
+    //this.state = props.something;
+    //this.setState() can only be called when component is rendered and placed in the DOM
+  }
+
+  componentDidMount() {
+    //ajax call
+    //this.setState({})
+    console.log("App - Mounted");
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    //old , new state props
+    console.log("App - updated");
+    console.log(prevProps, prevState);
+  }
+
   handerIncrement = counter => {
     const counters = [...this.state.counters];
     const index = counters.indexOf(counter);
@@ -34,7 +53,7 @@ class App extends Component {
 
   handleDelete = counterId => {
     console.log("Event handler called", counterId);
-    const counters = this.state.counters.filter(c => c.id != counterId);
+    const counters = this.state.counters.filter(c => c.id !== counterId);
     this.setState({ counters });
   };
 
@@ -47,6 +66,7 @@ class App extends Component {
   };
 
   render() {
+    console.log("App - Rendered");
     return (
       <React.Fragment>
         <NavBar

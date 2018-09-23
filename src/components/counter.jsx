@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 
 class Counter extends Component {
+  componentWillUnmount() {
+    console.log("Counter - unmount");
+    //clean up timer
+  }
+
   render() {
+    console.log("Counter - rendered");
     return (
       <div>
         <span style={{ fontSize: 20 }} className={this.getBadgeClasses()}>
